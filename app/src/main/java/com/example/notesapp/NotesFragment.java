@@ -12,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link NotesFragment#newInstance} factory method to
@@ -51,7 +55,10 @@ public class NotesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         TypedArray textArray = getResources().obtainTypedArray(R.array.text_notes);
         TextView textView = view.findViewById(R.id.notes_text);
+        Date date = new Date();
+        String dateResult = "\n" + date.toString();
         textView.setText(textArray.getResourceId(mTextInd, -1));
+        textView.setText(textView.getText() + dateResult);
         textArray.recycle();
     }
 }
