@@ -5,6 +5,5 @@
     <string name="text3">Текст_3</string>
     <string name="text4">Текст_4</string>
     <string name="text5">Текст_5</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

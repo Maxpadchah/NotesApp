@@ -24,15 +24,6 @@ public class NotesFragment extends Fragment {
 
     public NotesFragment() {
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param mTextInd Parameter 1.
-     * @return A new instance of fragment NotesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static NotesFragment newInstance(int mTextInd) {
         NotesFragment fragment = new NotesFragment();
         Bundle args = new Bundle();
@@ -52,14 +43,12 @@ public class NotesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_notes, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         TypedArray textArray = getResources().obtainTypedArray(R.array.text_notes);
         TextView textView = view.findViewById(R.id.notes_text);
         textView.setText(textArray.getResourceId(mTextInd, -1));
