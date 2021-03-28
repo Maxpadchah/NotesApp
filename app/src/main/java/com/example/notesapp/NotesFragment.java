@@ -16,11 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NotesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class NotesFragment extends Fragment {
     private static final String ARG_TEXT_IND = NotesFragment.class.getName() + "arg.text.ind";
     private int mTextInd;
