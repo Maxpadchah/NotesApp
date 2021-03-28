@@ -50,10 +50,9 @@ public class NotesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         TypedArray textArray = getResources().obtainTypedArray(R.array.text_notes);
         TextView textView = view.findViewById(R.id.notes_text);
-        Date date = new Date();
-        String dateResult = "\n" + date.toString();
+
         textView.setText(textArray.getResourceId(mTextInd, -1));
-        textView.setText(textView.getText() + dateResult);
+        textView.setText(textView.getText() + Note.date());
         textArray.recycle();
     }
 }
