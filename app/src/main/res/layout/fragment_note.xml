@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".NoteFragment"
+    android:orientation="vertical">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_text_elements"
+        app:startIconDrawable="@drawable/ic_baseline_add_comment_24"
+        android:layout_weight="1"
+        android:hint="@string/task_name"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tvNoteName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_text"
+            android:layout_marginTop="10dp"
+            android:textSize="25sp"
+            android:maxLength="20"
+            android:gravity="center"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_description"
+        app:startIconDrawable="@drawable/ic_baseline_description_24"
+        android:layout_weight="1"
+        android:hint="@string/task_description"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tvNoteDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:text="@string/tv_text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_text_elements"
+        android:layout_weight="1"
+        app:startIconDrawable="@drawable/ic_baseline_date_range_24"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tvNoteDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/tv_text"
+            android:focusable="false"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</LinearLayout>
