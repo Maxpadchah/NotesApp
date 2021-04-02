@@ -41,7 +41,7 @@ public class NoteFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_note, container, false);
         TextView tvName = view.findViewById(R.id.tvNoteName);
-        data = NoteDataSourceImpl.getInstance(getResources());
+        data = NoteDateSourceFirebaceImpl.getInstance();
         if (data.getItemAt(position) != null) {
             note = data.getItemAt(position);
             tvName.setText(note.getName());

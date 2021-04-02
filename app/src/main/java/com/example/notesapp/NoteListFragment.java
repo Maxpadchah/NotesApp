@@ -25,13 +25,43 @@ public class NoteListFragment extends Fragment {
     private NoteDataSource mDataSource;
     private int mLastSelectedPosition = -1;
     NoteAdapter mAdapter;
+    private  NoteDataSource.NoteDataSourceListener mListener = new NoteDataSource.NoteDataSourceListener() {
+        @Override
+        public void onItemAdded(int idx) {
+            if(mAdapter != null){
+                mAdapter.notifyItemInserted(idx);
+            }
+        }
 
+        @Override
+        public void onItemRemoved(int idx) {
+            if(mAdapter != null){
+                mAdapter.notifyItemRemoved(idx);
+            }
+        }
+
+        @Override
+        public void onItemUpdated(int idx) {
+            if(mAdapter != null){
+                mAdapter.notifyItemChanged(idx);
+            }
+
+        }
+
+        @Override
+        public void onDataSetChanged() {
+            if(mAdapter != null){
+                mAdapter.notifyDataSetChanged();
+            }
+
+        }
+    };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        mDataSource = NoteDataSourceImpl.getInstance(getResources());
+        mDataSource = NoteDateSourceFirebaceImpl.getInstance();
     }
 
     @Override
@@ -53,10 +83,15 @@ public class NoteListFragment extends Fragment {
 
 
         mAdapter = new NoteAdapter(this, mDataSource.getNotes(), onNoteClickListener);
+        mDataSource.addNoteDataSourceListener(mListener);
         recyclerView.setAdapter(mAdapter);
         return view;
     }
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mDataSource.removeNoteDataSourceListener(mListener);
+    }
 
     private void showToTheRight(int position) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();

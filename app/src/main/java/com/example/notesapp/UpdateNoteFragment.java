@@ -45,7 +45,7 @@ public class UpdateNoteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_note, container, false);
-        mNoteDataSource = NoteDataSourceImpl.getInstance(getResources());
+        mNoteDataSource = NoteDateSourceFirebaceImpl.getInstance();
         Note note = mNoteDataSource.getItemAt(position);
         TextView tvName = view.findViewById(R.id.tvNoteName);
         tvName.setText(note.getName());
@@ -53,12 +53,13 @@ public class UpdateNoteFragment extends Fragment {
         tvDescription.setText(note.getDescription());
 
         MaterialButton updateBtn = view.findViewById(R.id.update);
+
         updateBtn.setOnClickListener((v) -> {
             String name = tvName.getText().toString();
             String description = tvDescription.getText().toString();
             if (!checkFields(name, description)) return;
 
-            NoteDataSource data = NoteDataSourceImpl.getInstance(getResources());
+            NoteDataSource data = NoteDateSourceFirebaceImpl.getInstance();
             data.update(position, new Note(name, description, NoteDataSourceImpl.date()));
 
             FragmentManager fm = getActivity().getSupportFragmentManager();

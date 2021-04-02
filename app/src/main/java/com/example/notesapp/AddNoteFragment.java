@@ -37,8 +37,12 @@ public class AddNoteFragment extends Fragment {
             String name = tvName.getText().toString();
             String description = tvDescription.getText().toString();
             if (!checkFields(name, description)) return;
-            NoteDataSource data = NoteDataSourceImpl.getInstance(getResources());
-            data.add(new Note(name, description, NoteDataSourceImpl.date()));
+
+
+            NoteDataSource data = NoteDateSourceFirebaceImpl.getInstance();
+            Note note = new Note(name, description, NoteDataSourceImpl.date());
+            data.add(note);
+
             FragmentManager fm = getActivity().getSupportFragmentManager();
             fm.popBackStack();
         });

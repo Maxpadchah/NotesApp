@@ -1,23 +1,26 @@
 package com.example.notesapp;
 
 
-import java.io.Serializable;
-
-public class Note implements Serializable {
+public class Note {
     private String name;
     private String description;
     private String date;
+    private String mId;
 
-    public Note() {
-
-    }
+//    public Note() {
+//    }
 
     public Note(String name, String description, String date) {
         this.name = name;
         this.description = description;
         this.date = date;
     }
-
+    public String getId(){
+        return mId;
+    }
+    public void setId(String id){
+        mId = id;
+    }
     public String getName() {
         return name;
     }
