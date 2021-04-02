@@ -7,4 +7,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="image_size">100dp</dimen>
     <dimen name="margin_top_from_action_bar">55dp</dimen>
+    <dimen name="size_text_input">24sp</dimen>
+    <dimen name="margin_f">10dp</dimen>
 </resources>

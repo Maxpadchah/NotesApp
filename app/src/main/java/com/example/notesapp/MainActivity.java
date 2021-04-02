@@ -3,17 +3,14 @@ package com.example.notesapp;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
-
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -25,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_container, new com.example.notesapp.NoteListFragment());
         fragmentTransaction.commit();
-        if(!checkLandScapeOrientation()){
+        if (!checkLandScapeOrientation()) {
             Toolbar toolbar = initToolbar();
             initDrawer(toolbar);
         }
@@ -41,17 +38,13 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if (navigateMenu(id)){
-                    drawer.closeDrawer(GravityCompat.START);
-                    return true;
-                }
-                return false;
-
+        navigationView.setNavigationItemSelectedListener((item) -> {
+            int id = item.getItemId();
+            if (navigateMenu(id)) {
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
             }
+            return false;
         });
     }
 
@@ -67,19 +60,20 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-                @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
+
     private Toolbar initToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         return toolbar;
     }
 
-    private boolean checkLandScapeOrientation(){
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+    private boolean checkLandScapeOrientation() {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             return true;
         }
         return false;

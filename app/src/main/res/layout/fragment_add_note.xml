@@ -1,36 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE LinearLayout [<!ELEMENT LinearLayout (com.google.android.material.textfield.TextInputLayout|com.google.android.material.button.MaterialButton)*><!ATTLIST LinearLayoutxmlns:android CDATA #REQUIREDxmlns:app CDATA #REQUIREDxmlns:tools CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:orientation CDATA #REQUIREDtools:context CDATA #REQUIRED><!ELEMENT com.google.android.material.textfield.TextInputLayout (com.google.android.material.textfield.TextInputEditText)*><!ATTLIST com.google.android.material.textfield.TextInputLayoutandroid:hint CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDapp:startIconDrawable CDATA #REQUIRED><!ELEMENT com.google.android.material.textfield.TextInputEditText (#PCDATA)><!ATTLIST com.google.android.material.textfield.TextInputEditTextandroid:gravity CDATA #REQUIREDandroid:id CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:maxLength CDATA #REQUIREDandroid:textSize CDATA #REQUIREDtools:text CDATA #REQUIRED><!ELEMENT com.google.android.material.button.MaterialButton (#PCDATA)><!ATTLIST com.google.android.material.button.MaterialButtonandroid:id CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:text CDATA #REQUIRED>]>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_vertical"
-    android:layout_margin="10dp"
     tools:context=".NoteFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_text_elements"
         android:hint="@string/task_name"
-        android:layout_weight="1"
         app:startIconDrawable="@drawable/ic_baseline_add_comment_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tvNoteName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_f"
             android:gravity="center"
             android:maxLength="20"
-            android:text="@string/tv_text"
-            android:textSize="25sp" />
+            android:textSize="@dimen/text_size"
+            tools:text="@string/tv_text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_description"
-        android:layout_weight="1"
         android:hint="@string/task_description"
         app:startIconDrawable="@drawable/ic_baseline_description_24">
 
@@ -38,17 +33,19 @@
             android:id="@+id/tvNoteDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="@string/tv_text"
-            android:textSize="24sp" />
+            android:maxLength="120"
+            android:textSize="@dimen/size_text_input"
+            tools:text="@string/tv_text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/update"
+        android:id="@+id/add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/update"
+        android:text="@string/add_notes"
 
         />
+
+
 </LinearLayout>
