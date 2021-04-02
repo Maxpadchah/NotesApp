@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="names">
+        <item>Заметка 1</item>
+        <item>Заметка 2</item>
+        <item>Заметка 3</item>
+    </string-array>
+    <string-array name="descriptions">
+        <item>Текст 1</item>
+        <item>Текст 2</item>
+        <item>Текст 3</item>
+    </string-array>
+
+    <string-array name="dates">
+        <item>Description 1</item>
+        <item>Description 2</item>
+        <item>Description 3</item>
+    </string-array>
+</resources>

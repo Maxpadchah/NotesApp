@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_size">15sp</dimen>
+    <dimen name="note_layout_height">55dp</dimen>
+    <dimen name="note_text_size">24sp</dimen>
+    <dimen name="empty_width">0dp</dimen>
+    <dimen name="note_date_margin_right">10dp</dimen>
+    <dimen name="max_len_description">20</dimen>
+    <dimen name="max_len_task_name">120</dimen>
+    <dimen name="height_description">67dp</dimen>
+    <dimen name="height_text_elements">75dp</dimen>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:layout_margin="10dp"
+    tools:context=".NoteFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_text_elements"
+        android:hint="@string/task_name"
+        android:layout_weight="1"
+        app:startIconDrawable="@drawable/ic_baseline_add_comment_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tvNoteName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_f"
+            android:gravity="center"
+            android:maxLength="20"
+            android:text="@string/tv_text"
+            android:textSize="25sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_description"
+        android:layout_weight="1"
+        android:hint="@string/task_description"
+        app:startIconDrawable="@drawable/ic_baseline_description_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tvNoteDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/tv_text"
+            android:textSize="24sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/update"
+
+        />
+</LinearLayout>
