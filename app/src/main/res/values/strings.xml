@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">NotesApp</string>
+    <string name="app_name" translatable="false">Notes</string>
+    <string name="tv_text" translatable="false">Text View</string>
+    <string name="set_date" translatable="false">Set date</string>
+    <string name="back" translatable="false">Go to the back</string>
+    <string name="title_activity_main2" translatable="false">MainActivity</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="action_settings" translatable="false">Настройки</string>
+    <string name="about_us" translatable="false">О приложении</string>
+    <string name="search" translatable="false">Search</string>
+    <string name="my_app" translatable="false">Приложение заметки</string>
+    <string name="always" translatable="false">always</string>
+    <string name="update" translatable="false">Редактировать</string>
+    <string name="task_name" translatable="false">Название заметки</string>
+    <string name="task_description" translatable="false">Текст заметки</string>
+    <string name="message_if_empty_fields" translatable="false">Please fill all fields</string>
+    <string name="task_date" translatable="false">Дата</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_notes">Добавить заметку</string>
+    <string name="confirm_delete" translatable="false">Are you sure you want to delete?</string>
+    <string name="yes" translatable="false">Yes</string>
+    <string name="no" translatable="false">No</string>
+    <string name="save" translatable="false">Save</string>
+    <string name="add_fragment" translatable="false">Edit fragment</string>
+    <string name="editFragment" translatable="false">Add fragment</string>
+
 </resources>
