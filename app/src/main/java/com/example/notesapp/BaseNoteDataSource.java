@@ -15,7 +15,7 @@ public abstract class BaseNoteDataSource implements NoteDataSource {
     public void add(@NonNull Note note) {
         mData.add(note);
         int idx = mData.size() - 1;
-        for (NoteDataSourceListener listener : mListener){
+        for (NoteDataSourceListener listener : mListener) {
             listener.onItemAdded(idx);
         }
     }
@@ -23,7 +23,7 @@ public abstract class BaseNoteDataSource implements NoteDataSource {
     @Override
     public void remove(int position) {
         mData.remove(position);
-        for (NoteDataSourceListener listener : mListener){
+        for (NoteDataSourceListener listener : mListener) {
             listener.onItemRemoved(position);
         }
     }
@@ -49,20 +49,22 @@ public abstract class BaseNoteDataSource implements NoteDataSource {
         return mData.get(idx);
     }
 
-    public void addNoteDataSourceListener(NoteDataSourceListener listener){
+    public void addNoteDataSourceListener(NoteDataSourceListener listener) {
         mListener.add(listener);
     }
-    public void removeNoteDataSourceListener(NoteDataSourceListener listener){
+
+    public void removeNoteDataSourceListener(NoteDataSourceListener listener) {
         mListener.remove(listener);
 
     }
+
     @Override
     public void update(int position, Note note) {
         String id = note.getId();
-        if(id != null){
+        if (id != null) {
             int idx = 0;
-            for (Note n : mData){
-                if(id.equals(n.getId())){
+            for (Note n : mData) {
+                if (id.equals(n.getId())) {
                     n.setName(note.getName());
                     n.setDescription(note.getDescription());
                     n.setName(note.getDate());
@@ -74,6 +76,7 @@ public abstract class BaseNoteDataSource implements NoteDataSource {
         }
         add(note);
     }
+
     protected final void notifyUpdated(int idx) {
         for (NoteDataSourceListener listener : mListener) {
             listener.onItemUpdated(idx);

@@ -1,5 +1,6 @@
 package com.example.notesapp;
 
+import android.app.AlertDialog;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -25,24 +26,24 @@ public class NoteListFragment extends Fragment {
     private NoteDataSource mDataSource;
     private int mLastSelectedPosition = -1;
     NoteAdapter mAdapter;
-    private  NoteDataSource.NoteDataSourceListener mListener = new NoteDataSource.NoteDataSourceListener() {
+    private NoteDataSource.NoteDataSourceListener mListener = new NoteDataSource.NoteDataSourceListener() {
         @Override
         public void onItemAdded(int idx) {
-            if(mAdapter != null){
+            if (mAdapter != null) {
                 mAdapter.notifyItemInserted(idx);
             }
         }
 
         @Override
         public void onItemRemoved(int idx) {
-            if(mAdapter != null){
+            if (mAdapter != null) {
                 mAdapter.notifyItemRemoved(idx);
             }
         }
 
         @Override
         public void onItemUpdated(int idx) {
-            if(mAdapter != null){
+            if (mAdapter != null) {
                 mAdapter.notifyItemChanged(idx);
             }
 
@@ -50,7 +51,7 @@ public class NoteListFragment extends Fragment {
 
         @Override
         public void onDataSetChanged() {
-            if(mAdapter != null){
+            if (mAdapter != null) {
                 mAdapter.notifyDataSetChanged();
             }
 
@@ -78,7 +79,12 @@ public class NoteListFragment extends Fragment {
         });
         FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener((v) -> {
-            changeToAddFragment();
+            AddDialogFragment addDialogFragment = new AddDialogFragment();
+            addDialogFragment.setListener(((name, description, date) -> {
+                mDataSource.add(new Note(name, description, date));
+                mAdapter.notifyDataSetChanged();
+            }));
+            addDialogFragment.show(getActivity().getSupportFragmentManager(), getResources().getString(R.string.add_fragment));
         });
 
 
@@ -87,6 +93,7 @@ public class NoteListFragment extends Fragment {
         recyclerView.setAdapter(mAdapter);
         return view;
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -111,24 +118,6 @@ public class NoteListFragment extends Fragment {
         transaction.commit();
     }
 
-    private void changeToUpdateFragment(int position) {
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.main_container, UpdateNoteFragment.newInstance(position));
-        transaction.addToBackStack(null);
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        transaction.commit();
-    }
-
-    private void changeToAddFragment() {
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.main_container, new AddNoteFragment());
-        transaction.addToBackStack(null);
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        transaction.commit();
-    }
-
     @Override
     public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
         MenuInflater menuInflater = requireActivity().getMenuInflater();
@@ -140,10 +129,23 @@ public class NoteListFragment extends Fragment {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.note_list_item_menu_edit) {
-            changeToUpdateFragment(mLastSelectedPosition);
+            EditDialogFragment editDialogFragment = EditDialogFragment.newInstance(mDataSource.getItemAt(mLastSelectedPosition));
+            editDialogFragment.setListener(((name, description, date) -> {
+                mDataSource.update(mLastSelectedPosition, new Note(name, description, date));
+                mAdapter.notifyDataSetChanged();
+            }));
+            editDialogFragment.show(getActivity().getSupportFragmentManager(), getResources().getString(R.string.editFragment));
         } else if (item.getItemId() == R.id.note_list_item_menu_delete) {
-            mDataSource.remove(mLastSelectedPosition);
-            mAdapter.notifyDataSetChanged();
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+            builder.create().setTitle(getResources().getString(R.string.confirm_delete));
+            builder.setMessage(getResources().getString(R.string.confirm_delete))
+                    .setPositiveButton(R.string.yes, (dialog, id) -> {
+                        mDataSource.remove(mLastSelectedPosition);
+                        mAdapter.notifyDataSetChanged();
+                    }).setNegativeButton(R.string.no, (dialog, id) -> {
+                dialog.dismiss();
+            });
+            builder.show();
         } else {
             return super.onContextItemSelected(item);
         }
@@ -151,6 +153,10 @@ public class NoteListFragment extends Fragment {
         return true;
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 
     public void setLastSelectedPosition(int lastSelectedPosition) {
         mLastSelectedPosition = lastSelectedPosition;

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NoteDataFromFirestore extends Note {
-    private static final  String FIELD_ID = "id";
+//    private static final  String FIELD_ID = "id";
     private static final  String FIELD_NAME = "name";
     private static final  String FIELD_DESCRIPTION = "description";
     private static final  String FIELD_DATE = "date";
